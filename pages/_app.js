@@ -1,7 +1,22 @@
-import '../styles/globals.css'
+import { ThemeProvider } from "styled-components"
+import GlobalStyles from "../components/styles/Global"
 
-function MyApp({ Component, pageProps }) {
-  return <Component {...pageProps} />
+const theme = {
+  colors: {
+    header: "#ebfbff",
+    body: "#fff",
+    footer: "#003333",
+  },
+  mobile: "768px",
 }
 
-export default MyApp
+export default function App({ Component, pageProps }) {
+  return (
+    <>
+      <ThemeProvider theme={theme}>
+        <GlobalStyles />
+        <Component {...pageProps} />
+      </ThemeProvider>
+    </>
+  )
+}
